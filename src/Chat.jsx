@@ -67,7 +67,7 @@ const ChatBody = ({ msgList, id, scrollableDivRef }) => {
     <div ref={scrollableDivRef} className="my-4 max-h-80 overflow-auto">
       {msgList.map((data, index) => (
         <div
-          key={index} // You can also use `data.id` if your data has unique IDs
+          key={index}
           className={`flex my-2 mr-1 text-white ${id === data.id ? 'justify-end' : 'justify-start'}`}
         >
           <div
