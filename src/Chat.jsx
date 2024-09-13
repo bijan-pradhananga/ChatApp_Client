@@ -82,6 +82,12 @@ const ChatBody = ({ msgList, id, scrollableDivRef }) => {
 };
 
 const ChatFooter = ({ sendMsg, currentMsg, setCurrentMsg }) => {
+    // Function to handle key press
+    const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        sendMsg();
+      }
+    };
   return (
     <div className="flex justify-between">
       <input
@@ -89,11 +95,11 @@ const ChatFooter = ({ sendMsg, currentMsg, setCurrentMsg }) => {
         placeholder="Enter a message"
         value={currentMsg}
         className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-tl-lg rounded-bl-lg focus:ring-blue-700 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        onChange={(event) => setCurrentMsg(event.target.value)}
+        onChange={(event) => setCurrentMsg(event.target.value)}  onKeyDown={handleKeyPress} // Add this to listen for the Enter key
       />
       <button
         className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-tr-lg rounded-br-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        onClick={sendMsg}
+        onClick={sendMsg} 
       >
         Send
       </button>
